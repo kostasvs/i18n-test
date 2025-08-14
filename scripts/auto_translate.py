@@ -66,33 +66,32 @@ def translate_text(json_text, target_lang):
 def main():
     all_keys = get_source_dict()
     changes = get_changed_keys()
-    if not changes:
-        print(f"No new or changed lines detected in {LOCALES_DIR}/{SOURCE_LANG}.json.")
-        return
-
     for lang, lang_name in TARGET_LANGS:
         target_path = f"{LOCALES_DIR}/{lang}.json"
 
         # Load existing translations
         if os.path.exists(target_path):
+            if not changes:
+                continue
             with open(target_path, encoding="utf-8") as f:
                 target_data = json.load(f)
+                # Remove keys not in source json
+                target_data = {k: v for k, v in target_data.items() if k in all_keys}
+                # Make json of all added or changed keys
+                json_to_translate = {
+                    k: all_keys[k] for k in changes if k in all_keys
+                }
         else:
+            # If the target file does not exist, create a new one with all keys
             target_data = {}
+            json_to_translate = all_keys
 
-        # Remove keys not in source json
-        target_data = {k: v for k, v in target_data.items() if k in all_keys}
-
-        # Make json of all added or changed keys
-        json_to_translate = {
-            k: all_keys[k] for k in changes if k in all_keys
-        }
         if not json_to_translate:
             print(f"No changes to translate for {lang_name}.")
             continue
 
         # Translate the JSON text
-        json_text = json.dumps(json_to_translate, ensure_ascii=False, indent=4)
+        json_text = json.dumps(json_to_translate, ensure_ascii=False, indent=2)
         translated_text = translate_text(json_text, lang_name)
 
         # Parse the translated text back to JSON
@@ -109,6 +108,8 @@ def main():
         # Save updated file
         with open(target_path, "w", encoding="utf-8") as f:
             json.dump(target_data, f, ensure_ascii=False, indent=4)
+
+        print(f"Translations updated for {lang_name}.")
 
 
 if __name__ == "__main__":
