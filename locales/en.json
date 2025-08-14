@@ -1,2 +1,13 @@
 {
+    "tutorial_upcoming_tasks" : "Upcoming Tasks",
+    "tutorial_todotask_lowstock" : "<u>{businessname}</u>'s {producer_itemname} soon runs out of <u>{itemname}!</u>",
+    "tutorial_todotask_emptystock" : "<u>{businessname}</u>'s {producer_itemname} is out of <u>{itemname}!</u>",
+    "tutorial_todotask_missingemployee" : "<u>{businessname}</u> is open, but there's no employee at <u>{itemname}</u>.",
+    "tutorial_todotask_missingrequireditem" : "<u>{businessname}</u> requires at least one <u>{itemname}</u>.",
+    "tutorial_todotask_missingschedule" : "<u>{businessname}</u> has no opening hours defined.",
+    "tutorial_todotask_noproducers" : "<u>{businessname}</u> has no products to sell.",
+    "tutorial_todotask_dirtyfloors" : "<u>{businessname}</u> is dirty and needs to be cleaned.",
+    "tutorial_todotask_employeeunassigned" : "<u>{employeename}</u> is currently not assigned to any business.",
+    "tutorial_todotask_employeeidle" : "<u>{employeename}</u> is currently not assigned to any tasks.",
+    "tutorial_message_from_uncle_fred" : "message from Uncle Fred"
 }
