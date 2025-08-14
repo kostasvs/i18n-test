@@ -1,7 +1,11 @@
 {
     "tutorial_upcoming_tasks": "Kommende Opgaver",
-    "tutorial_todotask_lowstock": "<u>{businessname}</u>'s {producer_itemname} løber snart tør for <u>{itemname}!</u>",
-    "tutorial_todotask_emptystock": "<u>{businessname}</u>'s {producer_itemname} er løbet tør for <u>{itemname}!</u>",
+    "tutorial_todotask_lowstock": {
+        "text": "<u>{businessname}</u>'s {producer_itemname} løber snart tør for <u>{itemname}!</u>"
+    },
+    "tutorial_todotask_emptystock": {
+        "text": "<u>{businessname}</u>'s {producer_itemname} er løbet tør for <u>{itemname}!</u>"
+    },
     "tutorial_todotask_missingemployee": "<u>{businessname}</u> er åbent, men der er ingen medarbejder ved <u>{itemname}</u>.",
     "tutorial_todotask_missingrequireditem": "<u>{businessname}</u> kræver mindst én <u>{itemname}</u>.",
     "tutorial_todotask_missingschedule": "<u>{businessname}</u> har ingen åbningstider defineret.",

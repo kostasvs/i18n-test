@@ -1,7 +1,11 @@
 {
     "tutorial_upcoming_tasks": "Επερχόμενες Εργασίες",
-    "tutorial_todotask_lowstock": "<u>{businessname}</u>'s {producer_itemname} σύντομα τελειώνει το <u>{itemname}!</u>",
-    "tutorial_todotask_emptystock": "<u>{businessname}</u>'s {producer_itemname} είναι εκτός <u>{itemname}!</u>",
+    "tutorial_todotask_lowstock": {
+        "text": "<u>{businessname}</u>'s {producer_itemname} σύντομα τελειώνει από <u>{itemname}!</u>"
+    },
+    "tutorial_todotask_emptystock": {
+        "text": "<u>{businessname}</u>'s {producer_itemname} είναι άδειο από <u>{itemname}!</u>"
+    },
     "tutorial_todotask_missingemployee": "<u>{businessname}</u> είναι ανοιχτό, αλλά δεν υπάρχει υπάλληλος στο <u>{itemname}</u>.",
     "tutorial_todotask_missingrequireditem": "<u>{businessname}</u> απαιτεί τουλάχιστον ένα <u>{itemname}</u>.",
     "tutorial_todotask_missingschedule": "<u>{businessname}</u> δεν έχει καθορισμένες ώρες λειτουργίας.",
