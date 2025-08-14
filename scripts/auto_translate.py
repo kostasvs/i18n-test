@@ -49,8 +49,10 @@ def translate_text(json_text, target_lang):
     - All HTML tags (e.g., <u>…</u>) unchanged
     - The JSON structure unchanged
     Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
-    If a key contains a "hint" field, use it to understand the context of the translation.
-    Do not include the "hint" field in the output.
+
+    Some keys may contain objects with "text" and "hint" fields. In this case:
+    - Use the "hint" to understand the context of the translation.
+    - Use the translated text as output value directly. Do not output objects with "text" and "hint" fields.
 
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
