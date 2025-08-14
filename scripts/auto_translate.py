@@ -41,13 +41,14 @@ def get_changed_keys():
 def translate_text(json_text, target_lang):
     """Translate keeping placeholders intact."""
     prompt = f"""
-    You are a translation engine. 
+    You are a translation engine for a role-playing business simulation video game. 
     Translate only the JSON values in the following JSON to {target_lang}. 
     Keep:
     - All keys exactly the same
     - All placeholders in curly braces unchanged
     - All HTML tags (e.g., <u>…</u>) unchanged
     - The JSON structure unchanged
+    Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
 
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
