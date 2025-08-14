@@ -1,0 +1,13 @@
+{
+    "tutorial_upcoming_tasks": "Επερχόμενες Εργασίες",
+    "tutorial_todotask_lowstock": "<u>{businessname}</u>'s {producer_itemname} σύντομα θα εξαντληθεί από <u>{itemname}!</u>",
+    "tutorial_todotask_emptystock": "<u>{businessname}</u>'s {producer_itemname} είναι εκτός <u>{itemname}!</u>",
+    "tutorial_todotask_missingemployee": "<u>{businessname}</u> είναι ανοιχτό, αλλά δεν υπάρχει υπάλληλος στο <u>{itemname}</u>.",
+    "tutorial_todotask_missingrequireditem": "<u>{businessname}</u> απαιτεί τουλάχιστον ένα <u>{itemname}</u>.",
+    "tutorial_todotask_missingschedule": "<u>{businessname}</u> δεν έχει καθορισμένες ώρες λειτουργίας.",
+    "tutorial_todotask_noproducers": "<u>{businessname}</u> δεν έχει προϊόντα προς πώληση.",
+    "tutorial_todotask_dirtyfloors": "<u>{businessname}</u> είναι βρώμικο και χρειάζεται καθαρισμό.",
+    "tutorial_todotask_employeeunassigned": "<u>{employeename}</u> αυτή τη στιγμή δεν έχει ανατεθεί σε καμία επιχείρηση.",
+    "tutorial_todotask_employeeidle": "<u>{employeename}</u> αυτή τη στιγμή δεν έχει ανατεθεί σε καμία εργασία.",
+    "tutorial_message_from_uncle_fred": "μήνυμα από τον Θείο Φρεντ"
+}
