@@ -3,11 +3,11 @@
     "tutorial_upcoming_tasks" : "Upcoming Tasks",
     "tutorial_todotask_lowstock" : {
         "text": "<u>{businessname}</u>'s {producer_itemname} soon runs out of <u>{itemname}!</u>",
-        "hint": "e.g. <u>Costco</u>'s Shelf soon runs out of <u>Apples!</u>"
+        "hint": "e.g. Costco's Apple Stand soon runs out of Apples!"
     },
     "tutorial_todotask_emptystock" : {
         "text": "<u>{businessname}</u>'s {producer_itemname} is out of <u>{itemname}!</u>",
-        "hint": "e.g. <u>Costco</u>'s Shelf is out of <u>Apples!</u>"
+        "hint": "e.g. Costco's Apple Stand is out of Apples!"
     },
     "tutorial_todotask_missingemployee" : "<u>{businessname}</u> is open, but there's no employee at <u>{itemname}</u>.",
     "tutorial_todotask_missingrequireditem" : "<u>{businessname}</u> requires at least one <u>{itemname}</u>.",
