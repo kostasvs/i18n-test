@@ -66,7 +66,7 @@ def translate_text(json_text, target_lang):
 def main():
     all_keys = get_source_dict()
     changes = get_changed_keys()
-    for lang, lang_name in TARGET_LANGS:
+    for lang, lang_name in TARGET_LANGS.items():
         target_path = f"{LOCALES_DIR}/{lang}.json"
 
         # Load existing translations
