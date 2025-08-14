@@ -9,5 +9,6 @@
     "tutorial_todotask_dirtyfloors": "<u>{businessname}</u> είναι βρώμικο και χρειάζεται καθαρισμό.",
     "tutorial_todotask_employeeunassigned": "<u>{employeename}</u> αυτή τη στιγμή δεν έχει ανατεθεί σε καμία επιχείρηση.",
     "tutorial_todotask_employeeidle": "<u>{employeename}</u> αυτή τη στιγμή δεν έχει ανατεθεί σε καμία εργασία.",
-    "tutorial_message_from_uncle_fred": "μήνυμα από τον Θείο Φρεντ"
+    "tutorial_message_from_uncle_fred": "μήνυμα από τον Θείο Φρεντ",
+    "help_vehicletypename_anselmoaf90_content": "**Anselmo AF90** είναι ένας τύπος οχήματος που μπορείτε να αγοράσετε.\n\nΠροδιαγραφές Οχήματος:\n* Χωρητικότητα Φορτίου: 3\n* Χωρητικότητα Ρεζερβουάρ Καυσίμου: 68\n* Υποστήριξη Αυτόματης Στάθμευσης: Ναι\n* Μέγιστη Ταχύτητα: 100\n* Συνολική Τιμή: $520,000\n* Φορολογικά Εκπίπτον: Όχι\n\nΤο όχημα μπορεί να αγοραστεί από τις παρακάτω τοποθεσίες:\n* [Manhattan Luxury Cars](address: 15 bw)"
 }
