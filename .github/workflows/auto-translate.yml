@@ -3,7 +3,7 @@ name: Auto Translate
 on:
   push:
     paths:
-      - 'locales/en.json'
+      - 'locales/*.json'
 
 permissions:
   contents: write
