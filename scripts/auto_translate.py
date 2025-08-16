@@ -56,7 +56,7 @@ def get_changed_keys():
 
     # Compare last commit of source json to current
     diff_output = subprocess.check_output(
-        ["git", "diff", "HEAD~1", "HEAD", f"{LOCALES_DIR}/{SOURCE_LANG}.json"]
+        ["git", "diff", "HEAD^", "HEAD", f"{LOCALES_DIR}/{SOURCE_LANG}.json"]
     ).decode()
 
     # parse diff_output to detect exact changes

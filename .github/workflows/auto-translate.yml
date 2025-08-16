@@ -18,6 +18,8 @@ jobs:
         lang: [fr, el]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -41,6 +43,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
