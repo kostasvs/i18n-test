@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned" : "Driver already assigned",
     "bizman_contractsettings_notification_max_boxes" : "Max amount of boxes reached",
     "bizman_presentation_notification_cant_terminate_when_inside" : "You cannot terminate a contract while being inside of the building",
-    "bizman_presentation_notification_itemsold" : "Received {price} for furniture, inventory, vehicles and building deposit from {name}"
+    "bizman_presentation_notification_itemsold" : "Received {price} for furniture, inventory, vehicles and building deposit from {name}",
+    "common_notification_invalid_amount" : "Please, insert a valid amount"
 }
