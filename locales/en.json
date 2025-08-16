@@ -1,4 +1,5 @@
 {
+    "tutorial_1_objective_1" : "Travel to and rent <b>45 3rd Street</b>",
     "tutorial_upcoming_tasks" : "Upcoming Tasks",
     "tutorial_todotask_lowstock" : "<u>{businessname}</u>'s {producer_itemname} soon runs out of <u>{itemname}!</u>",
     "tutorial_todotask_emptystock" : "<u>{businessname}</u>'s {producer_itemname} is out of <u>{itemname}!</u>",
