@@ -7,7 +7,7 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 LOCALES_DIR = "locales"
 SOURCE_LANG = "en"
-TARGET_LANGS = {"da": "Danish", "el": "Greek"}
+TARGET_LANGS = {"da": "Danish", "el": "Greek", "fr": "French"}
 
 
 def get_source_dict():
@@ -51,8 +51,8 @@ def translate_text(json_text, target_lang):
     Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
 
     Pay attention to possessive nouns containing placeholders/tags, e.g.:
-    - "{{businessname}}'s {{itemname}}" should become "το {{itemname}} του {{businessname}}" in greek
-    - "<u>{{businessname}}</u>'s {{itemname}}" should become "το {{itemname}} του <u>{{businessname}}</u>" in greek
+    - "{{businessname}}'s {{itemname}}" should treated as "the {{itemname}} of {{businessname}}" when translating
+    - "<u>{{businessname}}</u>'s {{itemname}}" should be treated similarly, keeping the <u> tags intact.
 
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
