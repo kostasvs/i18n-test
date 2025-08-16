@@ -54,6 +54,8 @@ def translate_text(json_text, target_lang):
     - "{{businessname}}'s {{itemname}}" should treated as "the {{itemname}} of {{businessname}}" when translating
     - "<u>{{businessname}}</u>'s {{itemname}}" should be treated similarly, keeping the <u> tags intact.
 
+    Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
+
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
 
