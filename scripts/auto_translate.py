@@ -49,7 +49,10 @@ def translate_text(json_text, target_lang):
     - All HTML tags (e.g., <u>…</u>) unchanged
     - The JSON structure unchanged
     Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
-    The 's in e.g. {{name}}'s or <u>{{name}}</u>'s should be translated normally as possessive.
+
+    Pay attention to possessive nouns containing placeholders/tags, e.g.:
+    - "{{businessname}}'s {{itemname}}" should become "{{itemname}} de {{businessname}}" in french
+    - "<u>{{businessname}}</u>'s {{itemname}}" should become "{{itemname}} de <u>{{businessname}}</u>" in french
 
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
