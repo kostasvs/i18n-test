@@ -1,0 +1,14 @@
+{
+    "help_vehicletypename_anselmoaf90_content": "**Anselmo AF90** est un type de véhicule que vous pouvez acheter.\n\nSpécifications du véhicule :\n* Capacité de chargement : 3\n* Capacité du réservoir de carburant : 68\n* Support de stationnement automatique : Oui\n* Vitesse maximale : 100\n* Prix total : 520 000 $\n* Déductible d'impôt : Non\n\nLe véhicule peut être acheté aux emplacements suivants :\n* [Manhattan Luxury Cars](address: 15 bw)",
+    "tutorial_upcoming_tasks": "Tâches à venir",
+    "tutorial_todotask_lowstock": "le {producer_itemname} de {businessname} est bientôt à court de <u>{itemname}!</u>",
+    "tutorial_todotask_emptystock": "le {producer_itemname} de {businessname} est à court de <u>{itemname}!</u>",
+    "tutorial_todotask_missingemployee": "<u>{businessname}</u> est ouvert, mais il n'y a pas d'employé à <u>{itemname}</u>.",
+    "tutorial_todotask_missingrequireditem": "<u>{businessname}</u> nécessite au moins un <u>{itemname}</u>.",
+    "tutorial_todotask_missingschedule": "<u>{businessname}</u> n'a pas d'horaires d'ouverture définis.",
+    "tutorial_todotask_noproducers": "<u>{businessname}</u> n'a pas de produits à vendre.",
+    "tutorial_todotask_dirtyfloors": "<u>{businessname}</u> est sale et doit être nettoyé.",
+    "tutorial_todotask_employeeunassigned": "<u>{employeename}</u> n'est actuellement assigné à aucune entreprise.",
+    "tutorial_todotask_employeeidle": "<u>{employeename}</u> n'est actuellement assigné à aucune tâche.",
+    "tutorial_message_from_uncle_fred": "message de l'oncle Fred"
+}
