@@ -45,14 +45,14 @@ def translate_text(json_text, target_lang):
     Translate only the JSON values in the following JSON to {target_lang}. 
     Keep:
     - All keys exactly the same
-    - All placeholders in curly braces unchanged
-    - All HTML tags (e.g., <u>…</u>) unchanged
+    - All placeholders inside curly braces unchanged
+    - All HTML tags (e.g. <u> and </u>) unchanged
     - The JSON structure unchanged
     Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
 
     Pay attention to possessive nouns containing placeholders/tags, e.g.:
-    - "{{businessname}}'s {{itemname}}" should become "{{itemname}} de {{businessname}}" in french
-    - "<u>{{businessname}}</u>'s {{itemname}}" should become "{{itemname}} de <u>{{businessname}}</u>" in french
+    - "{{businessname}}'s {{itemname}}" should become "το {{itemname}} του {{businessname}}" in greek
+    - "<u>{{businessname}}</u>'s {{itemname}}" should become "το {{itemname}} του <u>{{businessname}}</u>" in greek
 
     Do not add extra text, explanations, or comments. 
     Output valid JSON only.
