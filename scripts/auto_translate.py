@@ -123,7 +123,7 @@ def main():
             continue
 
         # Translate the JSON text
-        translated_data = translate_text_partitioned(json_to_translate, lang_name, max_keys_per_partition=50)
+        translated_data = translate_text_partitioned(json_to_translate, lang_name, max_keys_per_partition=100)
 
         # Update target_data with translated values
         for key, value in translated_data.items():
