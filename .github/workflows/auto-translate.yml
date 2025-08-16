@@ -18,27 +18,37 @@ jobs:
         lang: [fr, el]
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2 # needed for git diff
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install openai
-
+      - run: pip install openai
       - name: Run translation script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TARGET_LANG: ${{ matrix.lang }}
         run: python -u scripts/auto_translate.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: translations-${{ matrix.lang }}
+          path: locales/${{ matrix.lang }}.json
 
-      - name: Commit and push changes
+  commit:
+    runs-on: ubuntu-latest
+    needs: translate
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: locales
+      - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add locales
-          git commit -m "Auto-translated for ${{ matrix.lang }}" || echo "No changes for ${{ matrix.lang }}"
+          git commit -m "Auto-translated updated locales" || echo "No changes"
           git push
