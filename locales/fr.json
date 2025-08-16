@@ -1,8 +1,8 @@
 {
     "help_vehicletypename_anselmoaf90_content": "**Anselmo AF90** est un type de véhicule que vous pouvez acheter.\n\nSpécifications du véhicule :\n* Capacité de chargement : 3\n* Capacité du réservoir de carburant : 68\n* Support de stationnement automatique : Oui\n* Vitesse maximale : 100\n* Prix total : 520 000 $\n* Déductible d'impôt : Non\n\nLe véhicule peut être acheté aux emplacements suivants :\n* [Manhattan Luxury Cars](address: 15 bw)",
     "tutorial_upcoming_tasks": "Tâches à venir",
-    "tutorial_todotask_lowstock": "le {producer_itemname} de {businessname} est bientôt à court de <u>{itemname}!</u>",
-    "tutorial_todotask_emptystock": "le {producer_itemname} de {businessname} est à court de <u>{itemname}!</u>",
+    "tutorial_todotask_lowstock": "<u>{businessname}</u> est sur le point de manquer de <u>{itemname}!</u>",
+    "tutorial_todotask_emptystock": "<u>{businessname}</u> n'a plus de <u>{itemname}!</u>",
     "tutorial_todotask_missingemployee": "<u>{businessname}</u> est ouvert, mais il n'y a pas d'employé à <u>{itemname}</u>.",
     "tutorial_todotask_missingrequireditem": "<u>{businessname}</u> nécessite au moins un <u>{itemname}</u>.",
     "tutorial_todotask_missingschedule": "<u>{businessname}</u> n'a pas d'horaires d'ouverture définis.",
