@@ -74,28 +74,14 @@ def get_changed_keys():
 
 def translate_text(json_text, target_lang):
     """Translate keeping placeholders intact."""
-    prompt = f"""
-    You are a translation engine for a role-playing business simulation video game. 
-    Translate only the JSON values in the following JSON to {target_lang}. 
-    Keep:
-    - All keys exactly the same
-    - All placeholders inside curly braces unchanged
-    - All HTML tags (e.g. <u> and </u>) unchanged
-    - The JSON structure unchanged
-    Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
+    # read prompt text from file
+    with open("scripts/translate_prompt.txt", encoding="utf-8") as f:
+        prompt = f.read()
 
-    Pay attention to possessive nouns containing placeholders/tags, e.g.:
-    - "{{businessname}}'s {{itemname}}" should treated as "the {{itemname}} of {{businessname}}" when translating
-    - "<u>{{businessname}}</u>'s {{itemname}}" should be treated similarly, keeping the <u> tags intact.
+    # replace placeholders in prompt
+    prompt = prompt.replace("%json_text%", json_text)
+    prompt = prompt.replace("%target_lang%", target_lang)
 
-    Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
-
-    Do not add extra text, explanations, or comments. 
-    Output valid JSON only.
-
-    JSON to translate:
-    {json_text}
-    """
     resp = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[{"role": "system", "content": prompt}],

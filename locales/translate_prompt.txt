@@ -1,0 +1,20 @@
+﻿You are a translation engine for a role-playing business simulation video game.
+Translate only the JSON values in the following JSON to %target_lang%.
+Keep:
+- All keys exactly the same
+- All placeholders inside curly braces unchanged
+- All HTML tags (e.g. <u> and </u>) unchanged
+- The JSON structure unchanged
+Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
+
+Pay attention to possessive nouns containing placeholders/tags, e.g.:
+- "{businessname}'s {itemname}" should treated as "the {itemname} of {businessname}" when translating
+- "<u>{businessname}</u>'s {itemname}" should be treated similarly, keeping the <u> tags intact.
+
+Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
+
+Do not add extra text, explanations, or comments.
+Output valid JSON only.
+
+JSON to translate:
+%json_text%
