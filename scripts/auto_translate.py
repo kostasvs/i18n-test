@@ -7,7 +7,36 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 LOCALES_DIR = "locales"
 SOURCE_LANG = "en"
-TARGET_LANGS = {"da": "Danish", "el": "Greek", "fr": "French"}
+
+# Define language names
+# Note: This list used to get the language name from the locale code.
+# Languages listed here are not necessarily translated.
+# The actual list of languages is in auto_translate.yml which passes them as environment variable TARGET_LANG.
+LANG_NAMES = {
+    "el": "Greek",
+    "ar": "Arabic",
+    "cs": "Czech",
+    "da": "Danish",
+    "de": "German",
+    "es": "Spanish",
+    "fi": "Finnish",
+    "fr": "French",
+    "hu": "Hungarian",
+    "it": "Italian",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "lt": "Lithuanian",
+    "nl": "Dutch",
+    "pl": "Polish",
+    "pt": "Portuguese",
+    "ro": "Romanian",
+    "ru": "Russian",
+    "tr": "Turkish",
+    "uk": "Ukrainian",
+    "zh-cn": "Chinese (Simplified)",
+    "zh-tw": "Chinese (Traditional)",
+}
+TARGET_LANG = os.environ["TARGET_LANG"]
 
 
 def get_source_dict():
@@ -98,42 +127,42 @@ def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
 def main():
     all_keys = get_source_dict()
     changes = get_changed_keys()
-    for lang, lang_name in TARGET_LANGS.items():
-        target_path = f"{LOCALES_DIR}/{lang}.json"
+    target_path = f"{LOCALES_DIR}/{TARGET_LANG}.json"
+    lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
 
-        # Load existing translations
-        if os.path.exists(target_path):
-            if not changes:
-                continue
-            with open(target_path, encoding="utf-8") as f:
-                target_data = json.load(f)
-                # Remove keys not in source json
-                target_data = {k: v for k, v in target_data.items() if k in all_keys}
-                # Make json of all added or changed keys
-                json_to_translate = {
-                    k: all_keys[k] for k in changes if k in all_keys
-                }
-        else:
-            # If the target file does not exist, create a new one with all keys
-            target_data = {}
-            json_to_translate = all_keys
+    # Load existing translations
+    if os.path.exists(target_path):
+        if not changes:
+            return
+        with open(target_path, encoding="utf-8") as f:
+            target_data = json.load(f)
+            # Remove keys not in source json
+            target_data = {k: v for k, v in target_data.items() if k in all_keys}
+            # Make json of all added or changed keys
+            json_to_translate = {
+                k: all_keys[k] for k in changes if k in all_keys
+            }
+    else:
+        # If the target file does not exist, create a new one with all keys
+        target_data = {}
+        json_to_translate = all_keys
 
-        if not json_to_translate:
-            print(f"No changes to translate for {lang_name}.")
-            continue
+    if not json_to_translate:
+        print(f"No changes to translate for {lang_name}.")
+        return
 
-        # Translate the JSON text
-        translated_data = translate_text_partitioned(json_to_translate, lang_name, max_keys_per_partition=100)
+    # Translate the JSON text
+    translated_data = translate_text_partitioned(json_to_translate, lang_name, max_keys_per_partition=100)
 
-        # Update target_data with translated values
-        for key, value in translated_data.items():
-            target_data[key] = value
+    # Update target_data with translated values
+    for key, value in translated_data.items():
+        target_data[key] = value
 
-        # Save updated file
-        with open(target_path, "w", encoding="utf-8") as f:
-            json.dump(target_data, f, ensure_ascii=False, indent=4)
+    # Save updated file
+    with open(target_path, "w", encoding="utf-8") as f:
+        json.dump(target_data, f, ensure_ascii=False, indent=4)
 
-        print(f"Translations updated for {lang_name}.")
+    print(f"Translations updated for {lang_name}.")
 
 
 if __name__ == "__main__":

@@ -12,6 +12,10 @@ permissions:
 jobs:
   translate:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        lang: [fr, el]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,6 +32,7 @@ jobs:
       - name: Run translation script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TARGET_LANG: ${{ matrix.lang }}
         run: python -u scripts/auto_translate.py
 
       - name: Commit and push changes
@@ -35,5 +40,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add locales
-          git commit -m "Auto-translated updated locales" || echo "No changes to commit"
+          git commit -m "Auto-translated for ${{ matrix.lang }}" || echo "No changes for ${{ matrix.lang }}"
           git push
