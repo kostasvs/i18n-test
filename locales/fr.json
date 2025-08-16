@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned": "Conducteur déjà assigné",
     "bizman_contractsettings_notification_max_boxes": "Nombre maximum de boîtes atteint",
     "bizman_presentation_notification_cant_terminate_when_inside": "Vous ne pouvez pas résilier un contrat tout en étant à l'intérieur du bâtiment",
-    "bizman_presentation_notification_itemsold": "Reçu {price} pour les meubles, l'inventaire, les véhicules et le dépôt du bâtiment de {name}"
+    "bizman_presentation_notification_itemsold": "Reçu {price} pour les meubles, l'inventaire, les véhicules et le dépôt du bâtiment de {name}",
+    "common_notification_invalid_amount": "Veuillez insérer un montant valide"
 }

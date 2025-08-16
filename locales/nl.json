@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned": "Chauffeur al toegewezen",
     "bizman_contractsettings_notification_max_boxes": "Maximale aantal dozen bereikt",
     "bizman_presentation_notification_cant_terminate_when_inside": "Je kunt een contract niet beëindigen terwijl je binnen het gebouw bent",
-    "bizman_presentation_notification_itemsold": "Ontvangen {price} voor meubels, inventaris, voertuigen en borg van {name}"
+    "bizman_presentation_notification_itemsold": "Ontvangen {price} voor meubels, inventaris, voertuigen en borg van {name}",
+    "common_notification_invalid_amount": "Voer alstublieft een geldig bedrag in"
 }

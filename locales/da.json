@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned": "Chauffør allerede tildelt",
     "bizman_contractsettings_notification_max_boxes": "Maksimalt antal kasser nået",
     "bizman_presentation_notification_cant_terminate_when_inside": "Du kan ikke opsige en kontrakt, mens du er inde i bygningen",
-    "bizman_presentation_notification_itemsold": "Modtaget {price} for møbler, inventar, køretøjer og bygning depositum fra {name}"
+    "bizman_presentation_notification_itemsold": "Modtaget {price} for møbler, inventar, køretøjer og bygning depositum fra {name}",
+    "common_notification_invalid_amount": "Indtast venligst et gyldigt beløb"
 }

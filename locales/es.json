@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned": "Conductor ya asignado",
     "bizman_contractsettings_notification_max_boxes": "Se alcanzó la cantidad máxima de cajas",
     "bizman_presentation_notification_cant_terminate_when_inside": "No puedes terminar un contrato mientras estés dentro del edificio",
-    "bizman_presentation_notification_itemsold": "Recibido {price} por muebles, inventario, vehículos y depósito del edificio de {name}"
+    "bizman_presentation_notification_itemsold": "Recibido {price} por muebles, inventario, vehículos y depósito del edificio de {name}",
+    "common_notification_invalid_amount": "Por favor, inserte una cantidad válida"
 }

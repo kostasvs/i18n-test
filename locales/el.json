@@ -498,5 +498,6 @@
     "bizman_warehouse_driverstation_notification_driver_already_assigned": "Ο οδηγός έχει ήδη ανατεθεί",
     "bizman_contractsettings_notification_max_boxes": "Έχει επιτευχθεί η μέγιστη ποσότητα κουτιών",
     "bizman_presentation_notification_cant_terminate_when_inside": "Δεν μπορείτε να τερματίσετε μια σύμβαση ενώ βρίσκεστε μέσα στο κτίριο",
-    "bizman_presentation_notification_itemsold": "Λάβατε {price} για έπιπλα, απόθεμα, οχήματα και προκαταβολή κτιρίου από {name}"
+    "bizman_presentation_notification_itemsold": "Λάβατε {price} για έπιπλα, απόθεμα, οχήματα και προκαταβολή κτιρίου από {name}",
+    "common_notification_invalid_amount": "Παρακαλώ, εισάγετε ένα έγκυρο ποσό"
 }
