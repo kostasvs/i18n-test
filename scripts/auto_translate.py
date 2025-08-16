@@ -119,9 +119,11 @@ def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
         partitions.append(current_partition)
 
     translated_data = {}
+    remaining_keys = len(json_data)
     for part in partitions:
         json_text = json.dumps(part, ensure_ascii=False, indent=2)
-        print(f"Translating {len(part)} keys for {target_lang}...")
+        print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {target_lang}...")
+        remaining_keys -= len(part)
         translated_text = translate_text(json_text, target_lang)
         translated_part = json.loads(translated_text)
         translated_data.update(translated_part)
