@@ -27,7 +27,7 @@ jobs:
       - name: Run translation script
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python scripts/auto_translate.py
+        run: python -u scripts/auto_translate.py
 
       - name: Commit and push changes
         run: |
