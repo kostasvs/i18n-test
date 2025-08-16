@@ -49,6 +49,11 @@ def get_source_dict():
 
 def get_changed_keys():
     """Returns a list for changed or new keys in source json."""
+    # If the event is a manual trigger, don't check for changes, only missing translations will be added
+    event_name = os.getenv("GITHUB_EVENT_NAME")
+    if event_name == "workflow_dispatch":
+        return []
+
     # Compare last commit of source json to current
     diff_output = subprocess.check_output(
         ["git", "diff", "HEAD~1", "HEAD", f"{LOCALES_DIR}/{SOURCE_LANG}.json"]
@@ -132,16 +137,12 @@ def main():
 
     # Load existing translations
     if os.path.exists(target_path):
-        if not changes:
-            return
         with open(target_path, encoding="utf-8") as f:
             target_data = json.load(f)
             # Remove keys not in source json
             target_data = {k: v for k, v in target_data.items() if k in all_keys}
             # Make json of all added or changed keys
-            json_to_translate = {
-                k: all_keys[k] for k in changes if k in all_keys
-            }
+            json_to_translate = {k: all_keys[k] for k in all_keys if k not in target_data or k in changes}
     else:
         # If the target file does not exist, create a new one with all keys
         target_data = {}
