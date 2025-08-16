@@ -47,7 +47,6 @@ def translate_text(json_text, target_lang):
     - All keys exactly the same
     - All placeholders inside curly braces unchanged
     - All HTML tags (e.g. <u> and </u>) unchanged
-    - The JSON structure unchanged
     Text in other delimiters, e.g. **bold** or 'text', should be translated normally.
 
     Pay attention to possessive nouns containing placeholders/tags, e.g.:
@@ -55,7 +54,7 @@ def translate_text(json_text, target_lang):
     - "<u>{{businessname}}</u>'s {{itemname}}" should be treated similarly, keeping the <u> tags intact.
 
     Do not add extra text, explanations, or comments. 
-    Output valid JSON only.
+    Output valid JSON only. Do not output // comments even if the source JSON has them.
 
     JSON to translate:
     {json_text}
