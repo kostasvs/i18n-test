@@ -130,6 +130,16 @@ def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
 
 
 def main():
+    # ensure target language is set
+    if not TARGET_LANG:
+        print("TARGET_LANG environment variable is not set. Exiting.")
+        return
+
+    # ensure target language is not the source language
+    if TARGET_LANG == SOURCE_LANG:
+        print(f"Target language {TARGET_LANG} is the same as source language {SOURCE_LANG}. No translation needed.")
+        return
+
     all_keys = get_source_dict()
     changes = get_changed_keys()
     target_path = f"{LOCALES_DIR}/{TARGET_LANG}.json"
