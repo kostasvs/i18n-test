@@ -45,6 +45,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: locales
+          merge-multiple: true
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
