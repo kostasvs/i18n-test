@@ -90,16 +90,19 @@ def translate_text(json_text, target_lang):
     return resp.choices[0].message.content.strip()
 
 
-def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
+def translate_text_partitioned(json_data, target_lang, chars_per_partition):
     """Translate JSON data in partitions to avoid token limits."""
     partitions = []
     current_partition = {}
+    char_count = 0
 
     for key, value in json_data.items():
         current_partition[key] = value
-        if len(current_partition) >= max_keys_per_partition:
+        char_count += len(key) + len(value)
+        if char_count >= chars_per_partition:
             partitions.append(current_partition)
             current_partition = {}
+            char_count = 0
 
     if current_partition:
         partitions.append(current_partition)
@@ -116,8 +119,8 @@ def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
             translated_data.update(translated_part)
         except json.JSONDecodeError as e:
             print(f"Error decoding JSON for {target_lang}: {e}")
-            print(f"JSON: {translated_text}")
-            continue
+            print(f"JSON: {translated_text}\n")
+            raise
 
     return translated_data
 
@@ -156,7 +159,7 @@ def main():
         return
 
     # Translate the JSON text
-    translated_data = translate_text_partitioned(json_to_translate, lang_name, max_keys_per_partition=100)
+    translated_data = translate_text_partitioned(json_to_translate, lang_name, chars_per_partition=50000)
 
     # Update target_data with translated values
     for key, value in translated_data.items():
