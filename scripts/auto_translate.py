@@ -120,7 +120,7 @@ def translate_text_partitioned(json_data, target_lang, chars_per_partition):
         except json.JSONDecodeError as e:
             print(f"Error decoding JSON for {target_lang}: {e}")
             print(f"JSON: {translated_text}\n")
-            raise
+            continue
 
     return translated_data
 
