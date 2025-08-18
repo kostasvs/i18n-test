@@ -111,8 +111,13 @@ def translate_text_partitioned(json_data, target_lang, max_keys_per_partition):
         print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {target_lang}...")
         remaining_keys -= len(part)
         translated_text = translate_text(json_text, target_lang)
-        translated_part = json.loads(translated_text)
-        translated_data.update(translated_part)
+        try:
+            translated_part = json.loads(translated_text)
+            translated_data.update(translated_part)
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON for {target_lang}: {e}")
+            print(f"JSON: {translated_text}")
+            continue
 
     return translated_data
 
