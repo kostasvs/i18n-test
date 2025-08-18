@@ -15,7 +15,7 @@ Any "producers" in placeholders refer to item producers or item containers, e.g.
 
 Do not add extra text, explanations, or comments.
 Output valid JSON only.
-Escape any double quotes in the values with a backslash (\).
+Escape any double quotes inside the values with a backslash (\) and ensure the values are surrounded by double quotes.
 
 JSON to translate:
 %json_text%
