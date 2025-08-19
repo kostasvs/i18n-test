@@ -83,7 +83,7 @@ def translate_text(json_text, target_lang):
     prompt = prompt.replace("%target_lang%", target_lang)
 
     resp = client.chat.completions.create(
-        model="gpt-5-mini",
+        model="gpt-5",
         messages=[{"role": "system", "content": prompt}],
         response_format={
             "type": "json_object",
