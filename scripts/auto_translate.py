@@ -83,8 +83,11 @@ def translate_text(json_text, target_lang):
     prompt = prompt.replace("%target_lang%", target_lang)
 
     resp = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5-mini",
         messages=[{"role": "system", "content": prompt}],
+        response_format={
+            "type": "json",
+        },
         temperature=0
     )
     return resp.choices[0].message.content.strip()
