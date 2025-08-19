@@ -87,8 +87,7 @@ def translate_text(json_text, target_lang):
         messages=[{"role": "system", "content": prompt}],
         response_format={
             "type": "json",
-        },
-        temperature=0
+        }
     )
     return resp.choices[0].message.content.strip()
 
