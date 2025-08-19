@@ -86,7 +86,7 @@ def translate_text(json_text, target_lang):
         model="gpt-5-mini",
         messages=[{"role": "system", "content": prompt}],
         response_format={
-            "type": "json",
+            "type": "json_object",
         }
     )
     return resp.choices[0].message.content.strip()
