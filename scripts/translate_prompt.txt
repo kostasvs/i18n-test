@@ -12,6 +12,8 @@ Pay attention to possessive nouns containing placeholders/tags, e.g.:
 - "<u>{businessname}</u>'s {itemname}" should be treated similarly, keeping the <u> tags intact.
 
 Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
+Use the US formatting for currency and place the currency symbol before the number, e.g. "$10,000".
+"Roadmap" refers to a list of planned features or updates for the game, not a physical road.
 
 %locale_instructions%
 
