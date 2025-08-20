@@ -80,7 +80,7 @@ def translate_text(json_text, target_lang):
 
     # read locale_instructions file if present
     locale_instructions = ""
-    locale_instructions_path = f"locale_instructions/{target_lang}.txt"
+    locale_instructions_path = f"scripts/locale_instructions/{target_lang}.txt"
     if os.path.exists(locale_instructions_path):
         with open(locale_instructions_path, encoding="utf-8") as f:
             locale_instructions = f.read()

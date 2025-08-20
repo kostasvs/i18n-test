@@ -1,1 +1,1 @@
-﻿Avenues should be translated to "Allé".
+﻿Avenues should be translated to "Allé", e.g. "1st Avenue" should be translated to "1. Allé".
