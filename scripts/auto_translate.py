@@ -89,6 +89,7 @@ def translate_text(json_text, target_lang):
     prompt = prompt.replace("%json_text%", json_text)
     prompt = prompt.replace("%target_lang%", target_lang)
     prompt = prompt.replace("%locale_instructions%", locale_instructions)
+    print(prompt)
 
     resp = client.chat.completions.create(
         model="gpt-5",
