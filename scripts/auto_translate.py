@@ -72,8 +72,11 @@ def get_changed_keys():
     return changes
 
 
-def translate_text(json_text, target_lang):
+def translate_text(json_text):
     """Translate keeping placeholders intact."""
+    target_lang = TARGET_LANG
+    lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
+
     # read prompt text from file
     with open("scripts/translate_prompt.txt", encoding="utf-8") as f:
         prompt = f.read()
@@ -87,7 +90,7 @@ def translate_text(json_text, target_lang):
 
     # replace placeholders in prompt
     prompt = prompt.replace("%json_text%", json_text)
-    prompt = prompt.replace("%target_lang%", target_lang)
+    prompt = prompt.replace("%target_lang%", lang_name)
     prompt = prompt.replace("%locale_instructions%", locale_instructions)
     print(prompt)
 
@@ -101,11 +104,12 @@ def translate_text(json_text, target_lang):
     return resp.choices[0].message.content.strip()
 
 
-def translate_text_partitioned(json_data, target_lang, chars_per_partition):
+def translate_text_partitioned(json_data, chars_per_partition):
     """Translate JSON data in partitions to avoid token limits."""
     partitions = []
     current_partition = {}
     char_count = 0
+    lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
 
     for key, value in json_data.items():
         current_partition[key] = value
@@ -121,12 +125,12 @@ def translate_text_partitioned(json_data, target_lang, chars_per_partition):
     translated_data = {}
     remaining_keys = len(json_data)
     for part in partitions:
-        print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {target_lang}...")
+        print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {lang_name}...")
         remaining_keys -= len(part)
-        translated_part = translate_partition(part, target_lang)
+        translated_part = translate_partition(part)
         if not translated_part:
             print("Retrying...")
-            translated_part = translate_partition(part, target_lang)
+            translated_part = translate_partition(part)
             if not translated_part:
                 raise ValueError("Translation failed after 2 tries.")
         translated_data.update(translated_part)
@@ -134,13 +138,14 @@ def translate_text_partitioned(json_data, target_lang, chars_per_partition):
     return translated_data
 
 
-def translate_partition(part, target_lang):
+def translate_partition(part):
+    lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
     json_text = json.dumps(part, ensure_ascii=False, indent=2)
-    translated_text = translate_text(json_text, target_lang)
+    translated_text = translate_text(json_text)
     try:
         return json.loads(translated_text)
     except json.JSONDecodeError as e:
-        print(f"Error decoding JSON for {target_lang}: {e}")
+        print(f"Error decoding JSON for {lang_name}: {e}")
         print(f"JSON: {translated_text}\n")
         return {}
 
@@ -178,7 +183,7 @@ def main():
         return
 
     # Translate the JSON text
-    translated_data = translate_text_partitioned(json_to_translate, lang_name, chars_per_partition=5000)
+    translated_data = translate_text_partitioned(json_to_translate, chars_per_partition=5000)
 
     # Update target_data with translated values
     for key, value in translated_data.items():
