@@ -4701,5 +4701,18 @@
     "business_description_wholesalestore_5": "Vi leverer overlegen engrosservice. Vi har varerne på lager til din virksomhed.",
     "transactiontype_deliveryjobwage_label": "Leveringsjob",
     "jobdemand_hasprinter": "Printer",
-    "jobdemand_hasprinter_description": "Medarbejderen kræver en hvilken som helst printer"
+    "jobdemand_hasprinter_description": "Medarbejderen kræver en hvilken som helst printer",
+    "streetname_firstavenue": "1. Avenue",
+    "streetname_fifthavenue": "5. Avenue",
+    "streetname_fourthavenue": "4. Avenue",
+    "streetname_secondavenue": "2. Avenue",
+    "streetname_sixthavenue": "6. Avenue",
+    "streetname_thirdavenue": "3. Avenue",
+    "tutorial_4_objective_1": "Optag et lån på $15,000",
+    "tutorial_11_objective_1": "Sørg for at have $8,000 på din bankkonto (ved at spare op eller tale med banken igen)",
+    "streetname_thirdandahalfavenue": "Tredje og en halv Avenue ",
+    "streetname_seventhavenue": "7. Avenue",
+    "streetname_eighthavenue": "8. Avenue",
+    "streetname_ninthavenue": "9. Avenue",
+    "streetname_tenthavenue": "10. Avenue"
 }
