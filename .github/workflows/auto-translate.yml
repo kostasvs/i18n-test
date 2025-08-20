@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        lang: [fr, el, da, nl, es]
+        lang: [fr, el, da, nl, es, ja, ko]
     steps:
       - uses: actions/checkout@v4
         with:
