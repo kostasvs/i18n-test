@@ -13,6 +13,8 @@ Pay attention to possessive nouns containing placeholders/tags, e.g.:
 
 Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
 
+%locale_instructions%
+
 Do not add extra text, explanations, or comments.
 Output valid JSON only.
 

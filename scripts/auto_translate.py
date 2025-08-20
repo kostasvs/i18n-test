@@ -78,9 +78,17 @@ def translate_text(json_text, target_lang):
     with open("scripts/translate_prompt.txt", encoding="utf-8") as f:
         prompt = f.read()
 
+    # read locale_instructions file if present
+    locale_instructions = ""
+    locale_instructions_path = f"locale_instructions/{target_lang}.txt"
+    if os.path.exists(locale_instructions_path):
+        with open(locale_instructions_path, encoding="utf-8") as f:
+            locale_instructions = f.read()
+
     # replace placeholders in prompt
     prompt = prompt.replace("%json_text%", json_text)
     prompt = prompt.replace("%target_lang%", target_lang)
+    prompt = prompt.replace("%locale_instructions%", locale_instructions)
 
     resp = client.chat.completions.create(
         model="gpt-5",
