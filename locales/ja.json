@@ -3908,7 +3908,6 @@
     "custom_game_presets_pasted_preset": "クリップボードからプリセット {name} を保存しました",
     "custom_game_presets_saved_preset": "プリセット {name} を保存しました",
     "custom_game_presets_save_preset": "プリセットを保存",
-    "custom_game_presets_are_you_sURE_delete": "プリセット {name} を削除してもよろしいですか？",
     "custom_game_presets_preset_already_exists": "名前「{name}」のプリセットはすでに存在します。上書きしますか？",
     "custom_game_presets_tooltip_delete": "プリセットを削除",
     "custom_game_presets_tooltip_copy": "クリップボードにコピー",
@@ -4714,5 +4713,6 @@
     "business_description_wholesalestore_5": "優れた卸売サービスを提供します。御社向けの在庫を取り揃えています。",
     "transactiontype_deliveryjobwage_label": "配達の仕事",
     "jobdemand_hasprinter": "プリンター",
-    "jobdemand_hasprinter_description": "従業員はいずれかのプリンターを求めています"
+    "jobdemand_hasprinter_description": "従業員はいずれかのプリンターを求めています",
+    "custom_game_presets_are_you_sure_delete": "本当にプリセット {name} を削除しますか？"
 }

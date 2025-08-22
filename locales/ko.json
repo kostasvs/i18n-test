@@ -4713,5 +4713,6 @@
     "business_description_wholesalestore_5": "최상급 도매 서비스를 제공합니다. 귀사를 위한 재고를 확보하고 있습니다.",
     "transactiontype_deliveryjobwage_label": "배달 업무",
     "jobdemand_hasprinter": "프린터",
-    "jobdemand_hasprinter_description": "직원이 프린터(종류 무관)를 요구합니다"
+    "jobdemand_hasprinter_description": "직원이 프린터(종류 무관)를 요구합니다",
+    "menu_options": "설정"
 }
