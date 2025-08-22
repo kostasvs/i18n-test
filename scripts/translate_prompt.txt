@@ -13,6 +13,7 @@ Pay attention to possessive nouns containing placeholders/tags, e.g.:
 
 Any "producers" in placeholders refer to item producers or item containers, e.g. boxes, shelves, machines, etc.
 Use the US formatting for currency and place the currency symbol before the number, e.g. "$10,000".
+"Options" refers to game settings.
 
 %locale_instructions%
 

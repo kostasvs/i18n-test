@@ -192,7 +192,6 @@
     "menu_load_game_recover_saves": "저장 복구",
     "menu_load_game_delete_save": "저장 삭제",
     "common_day_format": "{dayNumber}{day}",
-    "menu_options": "옵션",
     "menu_options_graphics": "그래픽",
     "menu_options_audio": "오디오",
     "menu_options_controls": "조작",
