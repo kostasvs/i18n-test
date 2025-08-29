@@ -3,8 +3,6 @@ import os
 import subprocess
 from openai import OpenAI
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-
 LOCALES_DIR = "locales"
 SOURCE_LANG = "en"
 
@@ -72,7 +70,7 @@ def get_changed_keys():
     return changes
 
 
-def translate_text(json_text):
+def translate_text(client, json_text):
     """Translate keeping placeholders intact."""
     target_lang = TARGET_LANG
     lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
@@ -103,7 +101,7 @@ def translate_text(json_text):
     return resp.choices[0].message.content.strip()
 
 
-def translate_text_partitioned(json_data, chars_per_partition):
+def translate_text_partitioned(client, json_data, chars_per_partition):
     """Translate JSON data in partitions to avoid token limits."""
     if not json_data:
         return {}
@@ -129,10 +127,10 @@ def translate_text_partitioned(json_data, chars_per_partition):
     for part in partitions:
         print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {lang_name}...")
         remaining_keys -= len(part)
-        translated_part = translate_partition(part)
+        translated_part = translate_partition(client, part)
         if not translated_part:
             print("Retrying...")
-            translated_part = translate_partition(part)
+            translated_part = translate_partition(client, part)
             if not translated_part:
                 raise ValueError("Translation failed after 2 tries.")
         translated_data.update(translated_part)
@@ -140,10 +138,10 @@ def translate_text_partitioned(json_data, chars_per_partition):
     return translated_data
 
 
-def translate_partition(part):
+def translate_partition(client, part):
     lang_name = LANG_NAMES.get(TARGET_LANG, TARGET_LANG)
     json_text = json.dumps(part, ensure_ascii=False, indent=2)
-    translated_text = translate_text(json_text)
+    translated_text = translate_text(client, json_text)
     try:
         return json.loads(translated_text)
     except json.JSONDecodeError as e:
@@ -163,6 +161,11 @@ def main():
         print(f"Target language {TARGET_LANG} is the same as source language {SOURCE_LANG}. No translation needed.")
         return
 
+    # exit with error if OPENAI_API_KEY is not set
+    if "OPENAI_API_KEY" not in os.environ:
+        raise Exception("Environment variable 'OPENAI_API_KEY' is not set. Exiting.")
+
+    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
     all_keys = get_source_dict()
     changes = get_changed_keys()
     target_path = f"{LOCALES_DIR}/{TARGET_LANG}.json"
@@ -183,7 +186,7 @@ def main():
 
     # Translate the JSON text
     print(f"{len(json_to_translate)} keys to translate for {lang_name}.")
-    translated_data = translate_text_partitioned(json_to_translate, chars_per_partition=5000)
+    translated_data = translate_text_partitioned(client, json_to_translate, chars_per_partition=5000)
 
     # Update target_data with translated values
     ordered_data = {}
