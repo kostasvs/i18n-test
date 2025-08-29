@@ -105,6 +105,9 @@ def translate_text(json_text):
 
 def translate_text_partitioned(json_data, chars_per_partition):
     """Translate JSON data in partitions to avoid token limits."""
+    if not json_data:
+        return {}
+
     partitions = []
     current_partition = {}
     char_count = 0
@@ -148,6 +151,7 @@ def translate_partition(part):
         print(f"JSON: {translated_text}\n")
         return {}
 
+
 def main():
     # ensure target language is set
     if not TARGET_LANG:
@@ -177,11 +181,8 @@ def main():
         target_data = {}
         json_to_translate = all_keys
 
-    if not json_to_translate:
-        print(f"No changes to translate for {lang_name}.")
-        return
-
     # Translate the JSON text
+    print(f"{len(json_to_translate)} keys to translate for {lang_name}.")
     translated_data = translate_text_partitioned(json_to_translate, chars_per_partition=5000)
 
     # Update target_data with translated values
