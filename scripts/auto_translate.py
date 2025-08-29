@@ -185,12 +185,16 @@ def main():
     translated_data = translate_text_partitioned(json_to_translate, chars_per_partition=5000)
 
     # Update target_data with translated values
-    for key, value in translated_data.items():
-        target_data[key] = value
+    ordered_data = {}
+    for key in all_keys:
+        if key in translated_data:
+            ordered_data[key] = translated_data[key]
+        elif key in target_data:
+            ordered_data[key] = target_data[key]
 
     # Save updated file
     with open(target_path, "w", encoding="utf-8") as f:
-        json.dump(target_data, f, ensure_ascii=False, indent=4)
+        json.dump(ordered_data, f, ensure_ascii=False, indent=4)
 
     print(f"Translations updated for {lang_name}.")
 
