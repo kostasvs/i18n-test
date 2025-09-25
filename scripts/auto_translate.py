@@ -1,10 +1,14 @@
 import json
 import os
 import subprocess
-from openai import OpenAI
+from time import time
+import traceback
+from datetime import datetime
+from openai import OpenAI, APIConnectionError
 
 LOCALES_DIR = "locales"
 SOURCE_LANG = "en"
+CHARS_PER_PARTITION = 6000
 
 # Define language names
 # Note: This list used to get the language name from the locale code.
@@ -89,6 +93,7 @@ def translate_text(client, json_text):
     # replace placeholders in prompt
     prompt = prompt.replace("%json_text%", json_text)
     prompt = prompt.replace("%target_lang%", lang_name)
+    prompt = prompt.replace("%lang_code%", TARGET_LANG)
     prompt = prompt.replace("%locale_instructions%", locale_instructions)
 
     resp = client.chat.completions.create(
@@ -125,15 +130,26 @@ def translate_text_partitioned(client, json_data, chars_per_partition):
     translated_data = {}
     remaining_keys = len(json_data)
     for part in partitions:
-        print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {lang_name}...")
-        remaining_keys -= len(part)
-        translated_part = translate_partition(client, part)
-        if not translated_part:
-            print("Retrying...")
-            translated_part = translate_partition(client, part)
+        try:
+            print(f"Translating {len(part)} keys (total remaining: {remaining_keys}) for {lang_name} ({TARGET_LANG})...")
+            remaining_keys -= len(part)
+            try:
+                translated_part = translate_partition(client, part)
+            except APIConnectionError:
+                print("APIConnectionError occurred.")
+                time.sleep(5)
+                translated_part = None
+
             if not translated_part:
-                raise ValueError("Translation failed after 2 tries.")
-        translated_data.update(translated_part)
+                print("Retrying...")
+                translated_part = translate_partition(client, part)
+                if not translated_part:
+                    raise ValueError("Translation failed after 2 tries.")
+            translated_data.update(translated_part)
+        except Exception as e:
+            log_error(e)
+            print(f"Error occurred while translating {lang_name} ({TARGET_LANG}), returning partial results. Error: {e}")
+            break
 
     return translated_data
 
@@ -145,10 +161,16 @@ def translate_partition(client, part):
     try:
         return json.loads(translated_text)
     except json.JSONDecodeError as e:
-        print(f"Error decoding JSON for {lang_name}: {e}")
+        print(f"Error decoding JSON for {lang_name} ({TARGET_LANG}): {e}")
         print(f"JSON: {translated_text}\n")
         return {}
 
+def log_error(e):
+    log_path = f"{LOCALES_DIR}/{TARGET_LANG}_errors.txt"
+    with open(log_path, "a", encoding="utf-8") as f:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(f"[{timestamp}] {repr(e)}\n")
+        f.write(traceback.format_exc() + "\n")
 
 def main():
     # ensure target language is set
@@ -185,8 +207,8 @@ def main():
         json_to_translate = all_keys
 
     # Translate the JSON text
-    print(f"{len(json_to_translate)} keys to translate for {lang_name}.")
-    translated_data = translate_text_partitioned(client, json_to_translate, chars_per_partition=5000)
+    print(f"{len(json_to_translate)} keys to translate for {lang_name} ({TARGET_LANG}).")
+    translated_data = translate_text_partitioned(client, json_to_translate, chars_per_partition=CHARS_PER_PARTITION)
 
     # Update target_data with translated values
     ordered_data = {}
@@ -200,7 +222,7 @@ def main():
     with open(target_path, "w", encoding="utf-8") as f:
         json.dump(ordered_data, f, ensure_ascii=False, indent=4)
 
-    print(f"Translations updated for {lang_name}.")
+    print(f"Translations updated for {lang_name} ({TARGET_LANG}).")
 
 
 if __name__ == "__main__":

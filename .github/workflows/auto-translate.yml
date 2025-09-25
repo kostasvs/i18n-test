@@ -40,7 +40,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: translations-${{ matrix.lang }}
-          path: locales/${{ matrix.lang }}.json
+          path: |
+            locales/${{ matrix.lang }}.json
+            locales/${{ matrix.lang }}_errors.txt
 
   commit:
     runs-on: ubuntu-latest
